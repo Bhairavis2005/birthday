@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funny Birthday Surprise 🎉</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #ffe6f0;
+    font-family: 'Comic Sans MS', sans-serif;
+    overflow: hidden;
+    flex-direction: column;
+  }
+
+  button {
+    padding: 20px 40px;
+    font-size: 24px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #ff6699, #ffcc00);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  button:hover {
+    transform: scale(1.1);
+  }
+
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: red;
+    top: 0;
+    animation: fall 3s linear infinite;
+  }
+
+  @keyframes fall {
+    0% {top: -10px; transform: rotate(0deg);}
+    100% {top: 100vh; transform: rotate(360deg);}
+  }
+</style>
+</head>
+<body>
+
+<h1>🎂 Click Below for a Surprise 🎂</h1>
+<button id="birthdayBtn">Click Me!</button>
+
+<script>
+const button = document.getElementById('birthdayBtn');
+
+button.addEventListener('click', () => {
+    // Funny popup
+    alert("🎉 Happy Birthday, Bestie! 🎉\nHope you laugh a lot today 😂");
+
+    // Generate confetti
+    for(let i=0; i<100; i++){
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.background = `hsl(${Math.random()*360}, 100%, 50%)`;
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.animationDuration = 2 + Math.random()*3 + 's';
+        confetti.style.width = confetti.style.height = (5 + Math.random()*10) + 'px';
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 3000);
+    }
+});
+</script>
+
+</body>
+</html>
